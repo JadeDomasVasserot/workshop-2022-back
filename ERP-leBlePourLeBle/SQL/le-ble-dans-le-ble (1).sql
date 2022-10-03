@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 03 oct. 2022 à 09:39
+-- Généré le : lun. 03 oct. 2022 à 13:40
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -20,6 +20,23 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `le-ble-dans-le-ble`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `evenement`
+--
+
+DROP TABLE IF EXISTS `evenement`;
+CREATE TABLE IF NOT EXISTS `evenement` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` text NOT NULL,
+  `type` text NOT NULL,
+  `duree` float NOT NULL,
+  `heureDebut` float NOT NULL,
+  `heureFin` float NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 

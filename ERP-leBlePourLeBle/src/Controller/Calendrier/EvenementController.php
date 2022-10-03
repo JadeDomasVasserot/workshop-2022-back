@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Calendrier\Controller;
 
 use App\Entity\Evenement;
 use App\Form\EvenementType;

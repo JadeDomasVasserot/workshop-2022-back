@@ -2,3 +2,5 @@ api_platform:
     resource: .
     type: api_platform
     prefix: /api
+    # title: 'Symfony REST API'
+    # description: 'A Symfony API to manage a simple blog app.'

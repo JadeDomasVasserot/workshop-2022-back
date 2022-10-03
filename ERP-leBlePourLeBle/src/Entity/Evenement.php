@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="evenement")
  * @ORM\Entity
+ * @ApiResource()
  */
 class Evenement
 {
@@ -19,42 +21,80 @@ class Evenement
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $ID;
+
+    public function getID(): ?int
+    {
+        return $this->ID;
+    }
+
+    public function setID(int $ID): self
+    {
+        $this->ID = $ID;
+
+        return $this;
+    }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="text", length=65535, nullable=false)
+     * @ORM\Column(type="string", length=30)
      */
-    private $nom;
+    private $Nom;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="text", length=65535, nullable=false)
+     * @ORM\Column(type="string", length=30)
      */
-    private $type;
+    private $Type;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="duree", type="time", nullable=false)
+     * @ORM\Column(type="float")
      */
-    private $duree;
+    private $Duree;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="heureDebut", type="time", nullable=false)
+     * @ORM\Column(type="float")
      */
-    private $heuredebut;
+    private $HeureDebut;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="heureFin", type="time", nullable=false)
+     * @ORM\Column(type="float")
      */
-    private $heurefin;
+    private $HeureFin;
+
+    public function getDuree(): ?float
+    {
+        return $this->Duree;
+    }
+
+    public function setDuree(float $Duree): self
+    {
+        $this->Duree = $Duree;
+
+        return $this;
+    }
+
+    public function getHeureDebut(): ?float
+    {
+        return $this->HeureDebut;
+    }
+
+    public function setHeureDebut(float $HeureDebut): self
+    {
+        $this->HeureDebut = $HeureDebut;
+
+        return $this;
+    }
+
+    public function getHeureFin(): ?float
+    {
+        return $this->HeureFin;
+    }
+
+    public function setHeureFin(float $HeureFin): self
+    {
+        $this->HeureFin = $HeureFin;
+
+        return $this;
+    }
 
 
 }
