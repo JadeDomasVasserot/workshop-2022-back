@@ -121,7 +121,14 @@ class ProduitController extends AbstractController
 
         $vielleQuantite = $produit->getQuantite();
 
-        $produit->setQuantite($quantite + $vielleQuantite);
+        $final = $quantite + $vielleQuantite;
+
+        if ($final <= 0){
+            $produit->setQuantite(0);
+        }
+        else {
+            $produit->setQuantite($final);
+        }
 
         $em->flush();
 
