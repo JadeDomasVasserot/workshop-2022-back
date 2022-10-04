@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Stock\Controller;
+namespace App\Controller\Stock;
 
 use App\Entity\Produit;
 use App\Form\ProduitType;
@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @Route("/produit")
@@ -93,4 +94,39 @@ class ProduitController extends AbstractController
 
         return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    /**
+     * @Route("/ajout/{ID}/{quantite}", name="ajout",methods={"GET"})
+     */
+    public function Ajout(int $ID, int $quantite, SessionInterface $session)
+    {
+        try{
+            $produit = $this->getDoctrine()
+            ->getRepository(Produit::class)
+            ->findOneBy([
+                'ID' => $ID,
+            ]);
+        }
+        catch (\Exception $err)
+        {
+            $response = new Response();
+
+            $response->setStatusCode(500);
+            return $response;
+        }
+            
+
+        $em = $this->getDoctrine()->getManager();
+
+        $vielleQuantite = $produit->getQuantite();
+
+        $produit->setQuantite($quantite + $vielleQuantite);
+
+        $em->flush();
+
+        $response = new Response();
+        return $response;
+    }
+
 }
