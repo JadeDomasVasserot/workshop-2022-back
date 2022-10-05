@@ -97,7 +97,7 @@ class ProduitController extends AbstractController
 
 
     /**
-     * @Route("/ajout/{ID}/{quantite}", name="ajout",methods={"GET"})
+     * @Route("/ajout/{ID}/{quantite}", name="ajout",methods={"POST"})
      */
     public function Ajout(int $ID, int $quantite, SessionInterface $session)
     {
